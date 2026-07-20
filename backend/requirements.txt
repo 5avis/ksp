@@ -1,10 +1,9 @@
-﻿fastapi
+fastapi
 uvicorn
 langchain
-langchain-community
 langchain-core
 langgraph
-autogen
-langchain-ollama
-python-dotenv
 pydantic
+requests
+python-dotenv
+zcatalyst-sdk

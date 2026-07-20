@@ -1,0 +1,14 @@
+{
+  "appsail": [
+    {
+      "source": ".",
+      "name": "crime-analytics-backend"
+    }
+  ],
+  "slate": [
+    {
+      "name": "crime-analytics-frontend",
+      "source": "C:\\crime-analytics-platform\\crime-analytics-frontend"
+    }
+  ]
+}
