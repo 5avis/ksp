@@ -1,4 +1,4 @@
-from typing import TypedDict, Annotated, Sequence
+﻿from typing import TypedDict, Annotated, Sequence
 from langgraph.graph import StateGraph, END
 from langgraph.graph.message import add_messages
 from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
@@ -10,7 +10,19 @@ class AgentState(TypedDict):
     next_step: str
     database_context: dict
 
+def _safe_tool_call(tool_fn, query: str, label: str) -> str:
+    """Run a tool call, never let it crash the graph."""
+    try:
+        result = tool_fn.invoke(query)
+        if not result:
+            return f"{label}: No results found."
+        return f"{label}: {result}"
+    except Exception as e:
+        return f"{label}: Tool error - {str(e)}"
+
 def router_node(state: AgentState):
+    if not state["messages"]:
+        return {"next_step": "rag_search"}
     last_message = state["messages"][-1].content.lower()
     if any(w in last_message for w in ["network", "link", "associate"]):
         return {"next_step": "network_tool"}
@@ -22,32 +34,28 @@ def router_node(state: AgentState):
         return {"next_step": "rag_search"}
 
 def network_tool_node(state: AgentState):
-    result = query_criminal_network.invoke(state["messages"][-1].content)
-    return {
-        "messages": [AIMessage(content=f"Network Analysis: {result}")], 
-        "database_context": {"tool": "network", "result": result}
-    }
+    query = state["messages"][-1].content if state["messages"] else ""
+    content = _safe_tool_call(query_criminal_network, query, "Network Analysis")
+    return {"messages": [AIMessage(content=content)], "database_context": {"tool": "network", "result": content}}
 
 def trend_tool_node(state: AgentState):
-    result = get_crime_trends.invoke(state["messages"][-1].content)
-    return {
-        "messages": [AIMessage(content=f"Trend Analysis: {result}")], 
-        "database_context": {"tool": "trend", "result": result}
-    }
+    query = state["messages"][-1].content if state["messages"] else ""
+    content = _safe_tool_call(get_crime_trends, query, "Trend Analysis")
+    return {"messages": [AIMessage(content=content)], "database_context": {"tool": "trend", "result": content}}
 
 def rag_search_node(state: AgentState):
-    result = search_crime_records.invoke(state["messages"][-1].content)
-    return {
-        "messages": [AIMessage(content=f"RAG Search: {result}")], 
-        "database_context": {"tool": "rag", "result": result}
-    }
+    query = state["messages"][-1].content if state["messages"] else ""
+    content = _safe_tool_call(search_crime_records, query, "RAG Search")
+    return {"messages": [AIMessage(content=content)], "database_context": {"tool": "rag", "result": content}}
 
 def autogen_debate_node(state: AgentState):
-    result = run_criminology_debate(state["messages"][-1].content)
-    return {
-        "messages": [AIMessage(content=f"Deep Analysis: {result}")], 
-        "database_context": {"tool": "debate", "result": result}
-    }
+    query = state["messages"][-1].content if state["messages"] else ""
+    try:
+        result = run_criminology_debate(query)
+        content = f"Deep Analysis: {result}" if result else "Deep Analysis: No result generated."
+    except Exception as e:
+        content = f"Deep Analysis: Error - {str(e)}"
+    return {"messages": [AIMessage(content=content)], "database_context": {"tool": "debate", "result": content}}
 
 workflow = StateGraph(AgentState)
 workflow.add_node("router", router_node)

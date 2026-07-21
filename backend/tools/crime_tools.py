@@ -23,6 +23,6 @@ def search_crime_records(query: str) -> str:
     return f"Found {len(matches)} relevant FIRs:\n" + "\n".join([f"- {doc}" for doc in matches])
 
 @tool
-def get_crime_trends(location: str, crime_type: str) -> str:
-    """Analyze crime trends and hotspots for a specific location and crime type."""
-    return f"Predictive analysis for {crime_type} in {location}: 15% increase expected next month based on historical seasonal data."
+def get_crime_trends(query: str) -> str:
+    """Analyze crime trends and hotspots based on a free-text query describing location and/or crime type."""
+    return f"Predictive analysis for '{query}': 15% increase expected next month based on historical seasonal data."  
