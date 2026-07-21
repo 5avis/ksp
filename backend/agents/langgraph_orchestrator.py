@@ -29,14 +29,24 @@ def network_tool_node(state: AgentState):
     }
 
 def trend_tool_node(state: AgentState):
-    result = get_crime_trends.invoke(state["messages"][-1].content)
+    user_input = state["messages"][-1].content.lower()
+
+    # naive parsing: fallback defaults
+    parts = user_input.split()
+    location = parts[-2] if len(parts) > 1 else "unknown"
+    crime_type = parts[-1] if len(parts) > 1 else "general"
+
+    result = get_crime_trends.invoke({"location": location, "crime_type": crime_type})
     return {
-        "messages": [AIMessage(content=f"Trend Analysis: {result}")], 
+        "messages": [AIMessage(content=f"Trend Analysis: {result}")],
         "database_context": {"tool": "trend", "result": result}
     }
 
+
 def rag_search_node(state: AgentState):
     result = search_crime_records.invoke(state["messages"][-1].content)
+
+
     return {
         "messages": [AIMessage(content=f"RAG Search: {result}")], 
         "database_context": {"tool": "rag", "result": result}
