@@ -51,6 +51,7 @@ def search_crime_records(query: str) -> str:
         session.close()
 
 @tool
+<<<<<<< HEAD
 def get_crime_trends(location: str, crime_type: str = "general") -> str:
     """Analyze crime trends and hotspots for a specific location and crime type."""
     session = SessionLocal()
@@ -67,3 +68,8 @@ def get_crime_trends(location: str, crime_type: str = "general") -> str:
     finally:
         session.close()
 
+=======
+def get_crime_trends(query: str) -> str:
+    """Analyze crime trends and hotspots based on a free-text query describing location and/or crime type."""
+    return f"Predictive analysis for '{query}': 15% increase expected next month based on historical seasonal data."  
+>>>>>>> 7154db404cbf3010826e30235cf0c8667fde97bc

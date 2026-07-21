@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import os
 from pathlib import Path
+=======
+﻿import os
+>>>>>>> 7154db404cbf3010826e30235cf0c8667fde97bc
 from dotenv import load_dotenv
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -52,6 +56,7 @@ trusted_origins = os.getenv("TRUSTED_ORIGINS", "https://yourdomain.com").split("
 trusted_origins = [origin.strip() for origin in trusted_origins if origin.strip()]
 
 app = FastAPI(title="Crime Analytics AI Platform - Zoho Catalyst Edition")
+<<<<<<< HEAD
 app.add_middleware(
     CORSMiddleware,
     allow_origins=trusted_origins,
@@ -59,6 +64,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+=======
+app.add_middleware(CORSMiddleware,
+                   allow_origins=["*"],
+                   allow_credentials=True,
+                   allow_methods=["*"],
+                   allow_headers=["*"])
+>>>>>>> 7154db404cbf3010826e30235cf0c8667fde97bc
 
 # Create QuickML instance AFTER loading env vars
 quickml_ai = QuickMLExplainableAI()
@@ -88,16 +100,25 @@ def health_check():
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat_endpoint(request: ChatRequest):
     try:
-        messages = [HumanMessage(content=msg["content"]) for msg in request.history if msg["role"] == "user"]
+        messages = [HumanMessage(content=msg["content"]) for msg in request.history if msg.get("role") == "user"]
         messages.append(HumanMessage(content=request.message))
-        
+
         graph_result = crime_graph.invoke({"messages": messages, "next_step": "", "database_context": {}})
-        database_context = {"query": request.message, "graph_analysis": graph_result["messages"][-1].content}
-        
+
+        result_messages = graph_result.get("messages", [])
+        if not result_messages:
+            return ChatResponse(
+                response="Sorry, the analysis engine returned no result. Please try rephrasing your query.",
+                evidence_trail=None
+            )
+
+        database_context = {"query": request.message, "graph_analysis": result_messages[-1].content}
+
         ai_response = quickml_ai.generate_explainable_response(user_query=request.message, database_context=database_context)
         return ChatResponse(response=ai_response, evidence_trail=database_context)
+
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return ChatResponse(response=f"Sorry, something went wrong: {str(e)}", evidence_trail=None)
 
 if __name__ == "__main__":
     import uvicorn

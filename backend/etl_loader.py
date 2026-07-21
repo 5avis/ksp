@@ -4,7 +4,7 @@ from models import CaseMaster, Victim, Accused, ComplainantDetails
 
 def clean_and_load_dataset(file_path: str):
     # 1. Load dataset
-    df = pd.read_csv(file_path)
+      df=pd.read_csv(file_path)
     
     # 2. Normalize column names to match FIR schema
     df.rename(columns={

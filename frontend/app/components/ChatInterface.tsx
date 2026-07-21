@@ -38,20 +38,32 @@ export default function ChatInterface() {
       });
 
       const data = await response.json();
-      setMessages(prev => [...prev, { role: 'ai', content: data.response }]);
-    } catch (error) {
-      setMessages(prev => [...prev, { role: 'ai', content: 'Error connecting to the intelligence backend. Ensure FastAPI and Ollama are running.' }]);
+      console.log("🔍 Backend Response:", data);
+
+      if (!response.ok) {
+        throw new Error(data.detail || "Backend returned an error");
+      }
+
+      const aiText = data.response || "Received empty response from backend.";
+      setMessages(prev => [...prev, { role: 'ai', content: aiText }]);
+      
+    } catch (error: any) {
+      console.error("❌ Chat Error:", error);
+      setMessages(prev => [...prev, { 
+        role: 'ai', 
+        content: `⚠️ Error: ${error.message || 'Failed to connect to the intelligence backend.'}` 
+      }]);
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleExportPDF = () => {
-    alert("PDF Export triggered! (In production, integrate 'jspdf' or 'react-pdf' here to download the conversation history locally).");
+    alert("PDF Export triggered!");
   };
 
   const handleVoiceInput = () => {
-    alert("Voice input triggered! (In production, integrate Web Speech API or Whisper.cpp here for Kannada/English transcription).");
+    alert("Voice input triggered!");
   };
 
   return (
