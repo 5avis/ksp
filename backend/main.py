@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import os
 from pathlib import Path
-=======
-﻿import os
->>>>>>> 7154db404cbf3010826e30235cf0c8667fde97bc
 from dotenv import load_dotenv
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -11,6 +7,16 @@ ENV_PATH = PROJECT_ROOT / ".env"
 
 # Load environment variables FIRST
 load_dotenv(dotenv_path=ENV_PATH, override=False)
+
+required_vars = [
+    "CATALYST_PROJECT_ID", "CATALYST_AUTH_TOKEN",
+    "QUICKML_ORG_ID", "QUICKML_AUTH_TOKEN",
+    "POSTGRES_URL", "NEO4J_URI", "NEO4J_USER", "NEO4J_PASSWORD", "QDRANT_URL"
+]
+
+for var in required_vars:
+    if not os.getenv(var):
+        raise RuntimeError(f"Missing required environment variable: {var}")
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -21,6 +27,7 @@ try:
     from pydantic_settings import BaseSettings
 except ImportError:  # pragma: no cover - fallback for older environments
     from pydantic import BaseSettings
+
 from agents.quickml_xai_engine import QuickMLExplainableAI, test_quickml_connection
 from agents.langgraph_orchestrator import crime_graph
 from langchain_core.messages import HumanMessage
@@ -42,53 +49,44 @@ settings = Settings()
 CATALYST_PROJECT_ID = os.getenv("CATALYST_PROJECT_ID", "")
 CATALYST_AUTH_TOKEN = os.getenv("CATALYST_AUTH_TOKEN", "")
 
-required_vars = [
-    "CATALYST_PROJECT_ID", "CATALYST_AUTH_TOKEN",
-    "QUICKML_ORG_ID", "QUICKML_AUTH_TOKEN",
-    "POSTGRES_URL", "NEO4J_URI", "NEO4J_USER", "NEO4J_PASSWORD", "QDRANT_URL"
-]
-
-for var in required_vars:
-    if not os.getenv(var):
-        raise RuntimeError(f"Missing required environment variable: {var}")
-
-trusted_origins = os.getenv("TRUSTED_ORIGINS", "https://yourdomain.com").split(",")
+trusted_origins = os.getenv("TRUSTED_ORIGINS", "*").split(",")
 trusted_origins = [origin.strip() for origin in trusted_origins if origin.strip()]
 
 app = FastAPI(title="Crime Analytics AI Platform - Zoho Catalyst Edition")
-<<<<<<< HEAD
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=trusted_origins,
+    allow_origins=trusted_origins if trusted_origins else ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-=======
-app.add_middleware(CORSMiddleware,
-                   allow_origins=["*"],
-                   allow_credentials=True,
-                   allow_methods=["*"],
-                   allow_headers=["*"])
->>>>>>> 7154db404cbf3010826e30235cf0c8667fde97bc
 
 # Create QuickML instance AFTER loading env vars
 quickml_ai = QuickMLExplainableAI()
 
+
 @app.on_event("startup")
 def startup_event():
-    init_db()
-    client = init_catalyst_client()
-    if not client:
-        raise RuntimeError("Catalyst client failed to initialize")
+    try:
+        init_db()
+    except Exception as e:
+        print(f"Database init warning: {e}")
+    try:
+        client = init_catalyst_client()
+    except Exception as e:
+        print(f"Catalyst init warning: {e}")
+
 
 class ChatRequest(BaseModel):
     message: str
     history: List[dict] = []
 
+
 class ChatResponse(BaseModel):
     response: str
     evidence_trail: Optional[Dict[str, Any]] = None
+
 
 @app.get("/health")
 def health_check():
@@ -96,6 +94,7 @@ def health_check():
         "catalyst": True,
         "quickml": test_quickml_connection()
     }
+
 
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat_endpoint(request: ChatRequest):
@@ -119,6 +118,7 @@ async def chat_endpoint(request: ChatRequest):
 
     except Exception as e:
         return ChatResponse(response=f"Sorry, something went wrong: {str(e)}", evidence_trail=None)
+
 
 if __name__ == "__main__":
     import uvicorn

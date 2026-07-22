@@ -1,4 +1,10 @@
 {
+  "functions": {
+    "targets": [
+      "search_crime_records"
+    ],
+    "source": "functions"
+  },
   "appsail": [
     {
       "source": ".",
@@ -8,7 +14,7 @@
   "slate": [
     {
       "name": "crime-analytics-frontend",
-      "source": "C:\\crime-analytics-platform\\crime-analytics-frontend"
+      "source": "crime-analytics-frontend"
     }
   ]
 }

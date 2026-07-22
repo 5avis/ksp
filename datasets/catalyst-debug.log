@@ -1,0 +1,209 @@
+[debug] [2026-07-22T13:50:21.697Z] : 
+[debug] [2026-07-22T13:50:21.700Z] : ----------------------------------------------------------------------
+[debug] [2026-07-22T13:50:21.701Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\vikas\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js ds:import --table Accused cleaned_Accused.csv
+[debug] [2026-07-22T13:50:21.701Z] : CLI Version:  1.27.0
+[debug] [2026-07-22T13:50:21.702Z] : Platform:     win32
+[debug] [2026-07-22T13:50:21.702Z] : Node Version: v25.0.0
+[debug] [2026-07-22T13:50:21.702Z] : Time:         Wed Jul 22 2026 19:20:21 GMT+0530 (India Standard Time)
+[debug] [2026-07-22T13:50:21.702Z] : ----------------------------------------------------------------------
+[debug] [2026-07-22T13:50:21.702Z] : 
+[debug] [2026-07-22T13:50:26.115Z] : > authorizing via signed-in user option
+[debug] [2026-07-22T13:50:26.116Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.projects.ALL","ZohoCatalyst.tables.ALL","ZohoCatalyst.tables.rows.ALL"]
+[debug] [2026-07-22T13:50:26.316Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001 
+
+[debug] [2026-07-22T13:50:26.547Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:22 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:26.554Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/environment 
+
+[debug] [2026-07-22T13:50:26.601Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:22 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:26.613Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bucket 
+
+[debug] [2026-07-22T13:50:26.663Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:22 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:29.754Z] : >>>> HTTP REQUEST : PUT https://ksp-crime-import-20260717-development.zohostratus.in/cleaned_Accused.csv 
+Request Body: {"fd":null,"path":"C:\\Users\\vikas\\OneDrive\\Desktop\\crimeAI\\ksp\\datasets\\cleaned_Accused.csv","flags":"r","mode":438,"end":null,"bytesRead":0,"_events":{},"_readableState":{"highWaterMark":65536,"buffer":[],"bufferIndex":0,"length":0,"pipes":[],"awaitDrainWriters":null},"_eventsCount":1}
+
+[debug] [2026-07-22T13:50:30.344Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"x-content-type-options":"nosniff","cache-control":"no-store, max-age=0","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"SAMEORIGIN","x-sts-request-id":"ix2-98202c3778014a3fa7b375508ca4ea09","etag":"ce92fdb3d907476a6d3ad5686bf15fac","strict-transport-security":"max-age=15768000","content-length":"0","date":"Wed, 22 Jul 2026 13:50:26 GMT","keep-alive":"timeout=20","connection":"keep-alive"}
+
+[debug] [2026-07-22T13:50:30.352Z] : >>>> HTTP REQUEST : POST https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write 
+Request Body: {"table_identifier":"Accused","object_details":{"bucket_name":"ksp-crime-import-20260717","object_key":"cleaned_Accused.csv"}}
+
+[debug] [2026-07-22T13:50:30.517Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:26 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:31.734Z] : 
+[debug] [2026-07-22T13:50:31.737Z] : ----------------------------------------------------------------------
+[debug] [2026-07-22T13:50:31.738Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\vikas\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js ds:status import 45680000000228001
+[debug] [2026-07-22T13:50:31.738Z] : CLI Version:  1.27.0
+[debug] [2026-07-22T13:50:31.738Z] : Platform:     win32
+[debug] [2026-07-22T13:50:31.738Z] : Node Version: v25.0.0
+[debug] [2026-07-22T13:50:31.739Z] : Time:         Wed Jul 22 2026 19:20:31 GMT+0530 (India Standard Time)
+[debug] [2026-07-22T13:50:31.739Z] : ----------------------------------------------------------------------
+[debug] [2026-07-22T13:50:31.739Z] : 
+[debug] [2026-07-22T13:50:36.105Z] : > authorizing via signed-in user option
+[debug] [2026-07-22T13:50:36.106Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.projects.ALL","ZohoCatalyst.tables.ALL","ZohoCatalyst.tables.rows.ALL"]
+[debug] [2026-07-22T13:50:36.310Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001 
+
+[debug] [2026-07-22T13:50:36.539Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:32 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:36.547Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/environment 
+
+[debug] [2026-07-22T13:50:36.603Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:32 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:36.612Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001 
+
+[debug] [2026-07-22T13:50:36.671Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:32 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:36.676Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:36.732Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:32 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:36.736Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":true}
+
+[debug] [2026-07-22T13:50:36.789Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:32 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:36.806Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:36.868Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:33 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:36.872Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001 
+
+[debug] [2026-07-22T13:50:36.927Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:33 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:38.945Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:39.003Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:35 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:39.006Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001 
+
+[debug] [2026-07-22T13:50:39.066Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:35 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:41.085Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:41.139Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:37 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:41.143Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001 
+
+[debug] [2026-07-22T13:50:41.198Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:37 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:43.218Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:43.271Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:39 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:43.274Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001 
+
+[debug] [2026-07-22T13:50:43.329Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:39 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:45.352Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:45.405Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:41 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:47.463Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:47.544Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:43 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:49.607Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:49.665Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:45 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:51.729Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:51.793Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:47 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:53.856Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:53.938Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:50 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:55.992Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:56.052Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:52 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:50:58.118Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:50:58.170Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:54 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:51:00.230Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:51:00.290Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:56 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:51:02.348Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:51:02.406Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:50:58 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:51:04.476Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:51:04.533Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:51:00 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:51:06.591Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:51:06.654Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:51:02 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:51:08.715Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:51:08.773Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:51:04 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:51:10.837Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:51:10.891Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:51:07 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-22T13:51:12.947Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/45680000000016001/bulk/write/45680000000228001/report 
+Query params: {"prev":false}
+
+[debug] [2026-07-22T13:51:13.006Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 22 Jul 2026 13:51:09 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[info] [2026-07-22T13:50:30.519Z] : 
+[info] [2026-07-22T13:50:30.520Z] : √ Successfully scheduled import job for table "Accused" with jobid "45680000000228001"
+[debug] [2026-07-22T13:51:14.674Z] : NO ERRORS REGISTERED
+[debug] [2026-07-22T13:51:14.674Z] : EXEC ENDED with event: ds:import, message: success
+[debug] [2026-07-22T13:51:14.674Z] : TOTAL DURATION OF COMMAND EXEC : 48625

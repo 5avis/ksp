@@ -1,4 +1,4 @@
-﻿try:
+try:
     from langchain.tools import tool
 except ImportError:  # pragma: no cover - fallback for minimal environments
     class _FallbackTool:
@@ -11,6 +11,8 @@ except ImportError:  # pragma: no cover - fallback for minimal environments
             return self.func(*args, **kwargs)
 
         def invoke(self, *args, **kwargs):
+            if len(args) == 1 and isinstance(args[0], dict):
+                return self.func(**args[0])
             return self.func(*args, **kwargs)
 
     def tool(func=None, *args, **kwargs):
@@ -31,17 +33,19 @@ except ImportError:  # pragma: no cover - fallback for package-based imports
     from backend.database import SessionLocal
     from backend.models import CaseMaster
 
+
 @tool
 def query_criminal_network(query: str) -> str:
     """Query criminal network relationships between accused, victims, or locations."""
     return f"Network Analysis: '{query}' is directly linked to 2 other entities and 1 financial account."
+
 
 @tool
 def search_crime_records(query: str) -> str:
     """Search FIRs and crime records based on keyword match in Postgres."""
     session = SessionLocal()
     try:
-        results = session.query(CaseMaster).filter(CaseMaster.BriefFacts.ilike(f"%{query}%")) .all()
+        results = session.query(CaseMaster).filter(CaseMaster.BriefFacts.ilike(f"%{query}%")).all()
         if not results:
             return "No FIRs found for your query."
         return "\n".join([f"Case {case.CaseMasterID}: {case.BriefFacts}" for case in results])
@@ -50,8 +54,8 @@ def search_crime_records(query: str) -> str:
     finally:
         session.close()
 
+
 @tool
-<<<<<<< HEAD
 def get_crime_trends(location: str, crime_type: str = "general") -> str:
     """Analyze crime trends and hotspots for a specific location and crime type."""
     session = SessionLocal()
@@ -67,9 +71,3 @@ def get_crime_trends(location: str, crime_type: str = "general") -> str:
         return f"Trend analysis for {crime_type} in {location}: 0 cases found."
     finally:
         session.close()
-
-=======
-def get_crime_trends(query: str) -> str:
-    """Analyze crime trends and hotspots based on a free-text query describing location and/or crime type."""
-    return f"Predictive analysis for '{query}': 15% increase expected next month based on historical seasonal data."  
->>>>>>> 7154db404cbf3010826e30235cf0c8667fde97bc

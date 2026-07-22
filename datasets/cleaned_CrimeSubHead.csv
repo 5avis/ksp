@@ -1,0 +1,26 @@
+CrimeSubHeadID,CrimeHeadID,CrimeHeadName,SeqID
+1,1,Arms Act,1
+2,2,Arson,2
+3,3,Attempt to Murder,3
+4,4,Burglary,4
+5,5,Chain Snatching,5
+6,6,Cheating,6
+7,7,Cyber Crime,7
+8,8,Domestic Violence,8
+9,9,Dowry Death,9
+10,10,Drug Possession,10
+11,11,Forgery,11
+12,12,Fraud,12
+13,13,Grievous Hurt,13
+14,14,Human Trafficking,14
+15,15,Hurt,15
+16,16,Kidnapping,16
+17,17,Murder,17
+18,18,NDPS Act,18
+19,19,PoCSO Act,19
+20,20,Rape,20
+21,21,Rioting,21
+22,22,Robbery,22
+23,23,Sexual Harassment,23
+24,24,Theft,24
+25,25,Vehicle Theft,25

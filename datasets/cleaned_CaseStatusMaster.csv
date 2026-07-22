@@ -1,0 +1,7 @@
+CaseStatusID,CaseStatusName
+1,Chargesheeted
+2,Closed
+3,Convicted
+4,Pending
+5,Trial Pending
+6,Under Investigation

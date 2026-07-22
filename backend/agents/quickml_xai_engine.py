@@ -8,33 +8,28 @@ import re
 quickml_client = None
 
 
-def test_quickml_connection():
+def test_quickml_connection() -> bool:
+    global quickml_client
+    if quickml_client is None:
+        quickml_client = QuickMLExplainableAI()
     try:
         response = quickml_client.ping()
-        return response.status == "success"
+        return getattr(response, "status", None) == "success"
     except Exception:
         return False
 
 
 class QuickMLExplainableAI:
     def __init__(self):
-<<<<<<< HEAD
         global quickml_client
 
-        self.org_id = os.getenv("QUICKML_ORG_ID", "")
-        self.auth_token = os.getenv("QUICKML_AUTH_TOKEN", "")
-        project_id = os.getenv("CATALYST_PROJECT_ID", "")
-        self.api_endpoint = f"https://api.catalyst.zoho.in/quickml/v1/project/{project_id}/glm/chat"
-        
-        self.headers = {
-=======
-        self.org_id = os.getenv("CATALYST_ORG_ID", "60078554986")
-        self.access_token = os.getenv("ZOHO_ACCESS_TOKEN", "")
+        self.org_id = os.getenv("CATALYST_ORG_ID") or os.getenv("QUICKML_ORG_ID") or "60078554986"
+        self.access_token = os.getenv("ZOHO_ACCESS_TOKEN") or os.getenv("QUICKML_AUTH_TOKEN") or ""
         self.refresh_token = os.getenv("ZOHO_REFRESH_TOKEN", "")
         self.client_id = os.getenv("ZOHO_CLIENT_ID", "")
         self.client_secret = os.getenv("ZOHO_CLIENT_SECRET", "")
         self.region = os.getenv("CATALYST_REGION", "in")
-        self.project_id = os.getenv("CATALYST_PROJECT_ID", "45680000000016001")
+        self.project_id = os.getenv("CATALYST_PROJECT_ID") or "45680000000016001"
 
         self.api_endpoint = f"https://api.catalyst.zoho.{self.region}/quickml/v1/project/{self.project_id}/glm/chat"
         self.token_url = f"https://accounts.zoho.{self.region}/oauth/v2/token"
@@ -49,18 +44,14 @@ class QuickMLExplainableAI:
             "Cite specific CaseMasterID, AccusedMasterID, and ArrestSurrenderID when applicable."
         )
 
-    def _headers(self):
+        quickml_client = self
+
+    def _headers(self) -> dict:
         return {
->>>>>>> 7154db404cbf3010826e30235cf0c8667fde97bc
             "Content-Type": "application/json",
             "Authorization": f"Zoho-oauthtoken {self.access_token}",
             "CATALYST-ORG": self.org_id
         }
-<<<<<<< HEAD
-        
-        self.system_prompt = "You are an elite Crime Intelligence Assistant for law enforcement. Analyze the provided context and answer professionally, citing specific CaseMasterID, AccusedMasterID, and ArrestSurrenderID when applicable."
-        quickml_client = self
-=======
 
     def _refresh_access_token(self) -> bool:
         if not self.refresh_token or not self.client_id or not self.client_secret:
@@ -88,7 +79,6 @@ class QuickMLExplainableAI:
             if self._refresh_access_token():
                 response = requests.post(self.api_endpoint, json=payload, headers=self._headers(), timeout=timeout)
         return response
->>>>>>> 7154db404cbf3010826e30235cf0c8667fde97bc
 
     def generate_explainable_response(self, user_query: str, database_context: Dict[str, Any], fir_context: Optional[str] = None) -> str:
         context_text = f"DATABASE CONTEXT:\n{json.dumps(database_context, indent=2)}\n"
@@ -122,18 +112,12 @@ class QuickMLExplainableAI:
             print(f"ERROR in generate_explainable_response: {str(e)}")
             return f"System Error: {str(e)}. Check your auth token and connection."
 
-<<<<<<< HEAD
-    def ping(self):
-        if not self.auth_token:
-            return SimpleNamespace(status="error")
-=======
     def _extract_clean_response(self, result: Dict) -> str:
         """Extract the clean response from various API response formats"""
         
         # Method 1: Direct 'response' key
         if isinstance(result, dict) and "response" in result:
             response_text = result["response"]
-            # Clean up any escaped quotes or formatting issues
             if isinstance(response_text, str):
                 return self._clean_response_text(response_text)
         
@@ -162,9 +146,7 @@ class QuickMLExplainableAI:
         # Try to extract from a string that looks like a dict
         if "'response':" in result_str or '"response":' in result_str:
             try:
-                # Try to parse as JSON if it's a string representation of dict
                 if result_str.startswith("{") and result_str.endswith("}"):
-                    # Replace single quotes with double quotes for JSON parsing
                     json_str = result_str.replace("'", '"')
                     parsed = json.loads(json_str)
                     if "response" in parsed:
@@ -179,7 +161,6 @@ class QuickMLExplainableAI:
         if not isinstance(text, str):
             return str(text)
         
-        # Remove common reasoning patterns
         patterns_to_remove = [
             r'\d+\.\s*\*\*?(Analyze|Review|Formulate|Evaluate|Determine|Context|Self-Correction).*?[\n]',
             r'\*\*?(Analyze the User|Review System|Formulate the Response|Evaluate the Intent|Drafting the Content).*?\*\*?',
@@ -190,35 +171,27 @@ class QuickMLExplainableAI:
         for pattern in patterns_to_remove:
             cleaned = re.sub(pattern, '', cleaned, flags=re.IGNORECASE | re.DOTALL)
         
-        # Remove leading/trailing whitespace and newlines
         cleaned = cleaned.strip()
         
-        # If the response starts with numbered analysis, try to find the actual answer
         if cleaned.startswith("1.") or cleaned.startswith("1 "):
-            # Look for sections that look like actual answers (after the analysis)
             lines = cleaned.split('\n')
             actual_answer_lines = []
-            in_answer = False
             
             for line in lines:
-                # Skip analysis headers
                 if any(keyword in line.lower() for keyword in ['analyze', 'review', 'formulate', 'determine', 'context']):
                     continue
-                # If we find actual content that's not a header, include it
                 if line.strip() and not line.strip().startswith('*') and not '**' in line:
                     actual_answer_lines.append(line)
-                    in_answer = True
             
             if actual_answer_lines:
                 cleaned = '\n'.join(actual_answer_lines)
         
-        return cleaned if cleaned else text  # Return original if cleaning removed everything
+        return cleaned if cleaned else text
 
     def test_connection(self) -> bool:
         if not self.access_token:
             print("DEBUG: No access token found")
             return False
->>>>>>> 7154db404cbf3010826e30235cf0c8667fde97bc
         try:
             test_payload = {
                 "model": "crm-di-glm47b_30b_it",
@@ -230,24 +203,6 @@ class QuickMLExplainableAI:
                 "temperature": 0.7,
                 "stream": False
             }
-<<<<<<< HEAD
-            response = requests.post(
-                self.api_endpoint,
-                json=test_payload,
-                headers=self.headers,
-                timeout=10
-            )
-            response.raise_for_status()
-            return SimpleNamespace(status="success" if response.status_code == 200 else "error")
-        except Exception:
-            return SimpleNamespace(status="error")
-
-    def test_quickml_connection(self) -> bool:
-        return test_quickml_connection()
-
-    def test_connection(self) -> bool:
-        return self.test_quickml_connection()
-=======
             response = self._post_with_retry(test_payload, timeout=10)
             print(f"DEBUG: Status code = {response.status_code}")
             print(f"DEBUG: Response body = {response.text}")
@@ -256,4 +211,10 @@ class QuickMLExplainableAI:
         except Exception as e:
             print(f"DEBUG: Exception = {str(e)}")
             return False
->>>>>>> 7154db404cbf3010826e30235cf0c8667fde97bc
+
+    def ping(self):
+        ok = self.test_connection()
+        return SimpleNamespace(status="success" if ok else "error")
+
+    def test_quickml_connection(self) -> bool:
+        return self.test_connection()

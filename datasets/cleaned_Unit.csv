@@ -1,0 +1,95 @@
+UnitID,UnitName,TypeID,ParentUnit,NationalityID,StateID,DistrictID,Active
+1,Bagalkot Central Police Station,1,0.0,1,1,1,1
+2,Bagalkot Town Police Station,1,0.0,1,1,1,1
+3,Bagalkot Rural Police Station,1,0.0,1,1,1,1
+4,Bagalkot Central Police Station,1,0.0,1,1,1,1
+5,Ballari Central Police Station,1,0.0,1,1,2,1
+6,Ballari Town Police Station,1,0.0,1,1,2,1
+7,Ballari Rural Police Station,1,0.0,1,1,2,1
+8,Belagavi Central Police Station,1,0.0,1,1,3,1
+9,Belagavi Town Police Station,1,0.0,1,1,3,1
+10,Belagavi Rural Police Station,1,0.0,1,1,3,1
+11,Bengaluru Rural Central Police Station,1,0.0,1,1,4,1
+12,Bengaluru Rural Town Police Station,1,0.0,1,1,4,1
+13,Bengaluru Rural Rural Police Station,1,0.0,1,1,4,1
+14,Bengaluru Urban Central Police Station,1,0.0,1,1,5,1
+15,Bengaluru Urban Town Police Station,1,0.0,1,1,5,1
+16,Bengaluru Urban Rural Police Station,1,0.0,1,1,5,1
+17,Bidar Central Police Station,1,0.0,1,1,6,1
+18,Bidar Town Police Station,1,0.0,1,1,6,1
+19,Bidar Rural Police Station,1,0.0,1,1,6,1
+20,Chamarajanagar Central Police Station,1,0.0,1,1,7,1
+21,Chamarajanagar Town Police Station,1,0.0,1,1,7,1
+22,Chamarajanagar Rural Police Station,1,0.0,1,1,7,1
+23,Chikkaballapura Central Police Station,1,0.0,1,1,8,1
+24,Chikkaballapura Town Police Station,1,0.0,1,1,8,1
+25,Chikkaballapura Rural Police Station,1,0.0,1,1,8,1
+26,Chikkamagaluru Central Police Station,1,0.0,1,1,9,1
+27,Chikkamagaluru Town Police Station,1,0.0,1,1,9,1
+28,Chikkamagaluru Rural Police Station,1,0.0,1,1,9,1
+29,Chitradurga Central Police Station,1,0.0,1,1,10,1
+30,Chitradurga Town Police Station,1,0.0,1,1,10,1
+31,Chitradurga Rural Police Station,1,0.0,1,1,10,1
+32,Dakshina Kannada Central Police Station,1,0.0,1,1,11,1
+33,Dakshina Kannada Town Police Station,1,0.0,1,1,11,1
+34,Dakshina Kannada Rural Police Station,1,0.0,1,1,11,1
+35,Davanagere Central Police Station,1,0.0,1,1,12,1
+36,Davanagere Town Police Station,1,0.0,1,1,12,1
+37,Davanagere Rural Police Station,1,0.0,1,1,12,1
+38,Dharwad Central Police Station,1,0.0,1,1,13,1
+39,Dharwad Town Police Station,1,0.0,1,1,13,1
+40,Dharwad Rural Police Station,1,0.0,1,1,13,1
+41,Gadag Central Police Station,1,0.0,1,1,14,1
+42,Gadag Town Police Station,1,0.0,1,1,14,1
+43,Gadag Rural Police Station,1,0.0,1,1,14,1
+44,Hassan Central Police Station,1,0.0,1,1,15,1
+45,Hassan Town Police Station,1,0.0,1,1,15,1
+46,Hassan Rural Police Station,1,0.0,1,1,15,1
+47,Haveri Central Police Station,1,0.0,1,1,16,1
+48,Haveri Town Police Station,1,0.0,1,1,16,1
+49,Haveri Rural Police Station,1,0.0,1,1,16,1
+50,Kalaburagi Central Police Station,1,0.0,1,1,17,1
+51,Kalaburagi Town Police Station,1,0.0,1,1,17,1
+52,Kalaburagi Rural Police Station,1,0.0,1,1,17,1
+53,Kodagu Central Police Station,1,0.0,1,1,18,1
+54,Kodagu Town Police Station,1,0.0,1,1,18,1
+55,Kodagu Rural Police Station,1,0.0,1,1,18,1
+56,Kolar Central Police Station,1,0.0,1,1,19,1
+57,Kolar Town Police Station,1,0.0,1,1,19,1
+58,Kolar Rural Police Station,1,0.0,1,1,19,1
+59,Koppal Central Police Station,1,0.0,1,1,20,1
+60,Koppal Town Police Station,1,0.0,1,1,20,1
+61,Koppal Rural Police Station,1,0.0,1,1,20,1
+62,Mandya Central Police Station,1,0.0,1,1,21,1
+63,Mandya Town Police Station,1,0.0,1,1,21,1
+64,Mandya Rural Police Station,1,0.0,1,1,21,1
+65,Mysuru Central Police Station,1,0.0,1,1,22,1
+66,Mysuru Town Police Station,1,0.0,1,1,22,1
+67,Mysuru Rural Police Station,1,0.0,1,1,22,1
+68,Raichur Central Police Station,1,0.0,1,1,23,1
+69,Raichur Town Police Station,1,0.0,1,1,23,1
+70,Raichur Rural Police Station,1,0.0,1,1,23,1
+71,Ramanagara Central Police Station,1,0.0,1,1,24,1
+72,Ramanagara Town Police Station,1,0.0,1,1,24,1
+73,Ramanagara Rural Police Station,1,0.0,1,1,24,1
+74,Shivamogga Central Police Station,1,0.0,1,1,25,1
+75,Shivamogga Town Police Station,1,0.0,1,1,25,1
+76,Shivamogga Rural Police Station,1,0.0,1,1,25,1
+77,Tumakuru Central Police Station,1,0.0,1,1,26,1
+78,Tumakuru Town Police Station,1,0.0,1,1,26,1
+79,Tumakuru Rural Police Station,1,0.0,1,1,26,1
+80,Udupi Central Police Station,1,0.0,1,1,27,1
+81,Udupi Town Police Station,1,0.0,1,1,27,1
+82,Udupi Rural Police Station,1,0.0,1,1,27,1
+83,Uttara Kannada Central Police Station,1,0.0,1,1,28,1
+84,Uttara Kannada Town Police Station,1,0.0,1,1,28,1
+85,Uttara Kannada Rural Police Station,1,0.0,1,1,28,1
+86,Vijayanagara Central Police Station,1,0.0,1,1,29,1
+87,Vijayanagara Town Police Station,1,0.0,1,1,29,1
+88,Vijayanagara Rural Police Station,1,0.0,1,1,29,1
+89,Vijayapur Central Police Station,1,0.0,1,1,30,1
+90,Vijayapur Town Police Station,1,0.0,1,1,30,1
+91,Vijayapur Rural Police Station,1,0.0,1,1,30,1
+92,Yadgir Central Police Station,1,0.0,1,1,31,1
+93,Yadgir Town Police Station,1,0.0,1,1,31,1
+94,Yadgir Rural Police Station,1,0.0,1,1,31,1
